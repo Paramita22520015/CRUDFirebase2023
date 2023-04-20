@@ -3,9 +3,9 @@ package com.example.crudfirebase2023
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MyListData : AppCompatActivity() {
+class UpdateData : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_list_data)
+        setContentView(R.layout.activity_update_data)
     }
 }
