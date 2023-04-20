@@ -16,6 +16,9 @@
         <activity
             android:name=".MyListData"
             android:exported="false" />
+        <activity
+            android:name=".UpdateData"
+            android:exported="false" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
