@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_update_data.*
 
 class UpdateData : AppCompatActivity() {
@@ -17,6 +18,8 @@ class UpdateData : AppCompatActivity() {
     private var cekNIM: String? = null
     private var cekNama: String? = null
     private var cekJurusan: String? = null
+    private var cekjeniskelamin: String? = null
+    private var cekalamat: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +35,11 @@ class UpdateData : AppCompatActivity() {
             cekNIM = new_nim.text.toString()
             cekNama = new_nama.text.toString()
             cekJurusan = new_jurusan.text.toString()
+            cekjeniskelamin = new_jeniskelamin.text. toString()
+            cekalamat = new_alamat.text. toString()
 
             // Mengecek apakah ada data yang kosong, sebelum diupdate
-            if (isEmpty(cekNIM!!) || isEmpty(cekNama!!) || isEmpty(cekJurusan!!)) {
+            if (isEmpty(cekNIM!!) || isEmpty(cekNama!!) || isEmpty(cekJurusan!!) || isEmpty(cekjeniskelamin!!) || (isEmpty(cekalamat!!))) {
                 Toast.makeText(this@UpdateData, "Data tidak boleh ada yang kosong",
                     Toast.LENGTH_SHORT).show()
             } else {
@@ -42,6 +47,8 @@ class UpdateData : AppCompatActivity() {
                 mahasiswa.nim = cekNIM
                 mahasiswa.nama = cekNama
                 mahasiswa.jurusan = cekJurusan
+                mahasiswa.jeniskelamin = cekjeniskelamin
+                mahasiswa. alamat = cekalamat
                 updateMahasiswa(mahasiswa)
             }
         }
@@ -53,9 +60,13 @@ class UpdateData : AppCompatActivity() {
         val getNIM = intent.extras?.getString("dataNIM")
         val getNama = intent.extras?.getString("dataNama")
         val getJurusan = intent.extras?.getString("dataJurusan")
+        val getjeniskelamin = intent.extras?.getString("datajeniskelamin")
+        val getalamat = intent.extras?.getString("dataalamat")
         new_nim.setText(getNIM)
         new_nama.setText(getNama)
         new_jurusan.setText(getJurusan)
+        new_jeniskelamin.setText(getjeniskelamin)
+        new_alamat.setText(getalamat)
     }
 
     //Proses Update data yang sudah ditentukan
@@ -71,6 +82,8 @@ class UpdateData : AppCompatActivity() {
                 new_nim.setText("")
                 new_nama.setText("")
                 new_jurusan.setText("")
+                new_jeniskelamin.setText("")
+                new_alamat.setText("")
                 Toast.makeText(this@UpdateData, "Data Berhasil diubah",
                     Toast.LENGTH_SHORT).show()
                 finish()

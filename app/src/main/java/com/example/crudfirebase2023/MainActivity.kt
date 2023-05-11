@@ -52,11 +52,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val getNIM: String = nim.getText().toString()
                 val getNama: String = nama.getText().toString()
                 val getJurusan: String = jurusan.getText().toString()
+                val getjeniskelamin = jeniskelamin.getText().toString()
+                val getalamat: String = alamat.getText().toString()
                 // Mendapatkan Referensi dari Database
                 val getReference: DatabaseReference
                 getReference = database.reference
                 // Mengecek apakah ada data yang kosong
-                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan)) {
+                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan) || isEmpty(getjeniskelamin) || isEmpty(getalamat)) {
                     //Jika Ada, maka akan menampilkan pesan singkan seperti berikut ini.
                     Toast.makeText(
                         this@MainActivity,
@@ -70,11 +72,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     */
 
                     getReference.child("Admin").child(getUserID).child("Mahasiswa").push()
-                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan))
+                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan, getjeniskelamin, getalamat))
                         .addOnCompleteListener(this) { //Peristiwa ini terjadi saat user berhasil menyimpan datanya kedalam Database
                             nim.setText("")
                             nama.setText("")
                             jurusan.setText("")
+                            jeniskelamin.setText("")
+                            alamat.setText("")
                             Toast.makeText(
                                 this@MainActivity, "Data Tersimpan",
                                 Toast.LENGTH_SHORT

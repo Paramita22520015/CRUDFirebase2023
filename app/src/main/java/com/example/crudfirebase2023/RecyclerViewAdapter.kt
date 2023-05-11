@@ -26,11 +26,15 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
         val NIM: TextView
         val Nama: TextView
         val Jurusan: TextView
+        val jeniskelamin: TextView
+        val alamat: TextView
         val ListItem: LinearLayout
         init {//Menginisialisasi View yang terpasang pada layout RecyclerView kita
             NIM = itemView.findViewById(R.id.nimx)
             Nama = itemView.findViewById(R.id.namax)
             Jurusan = itemView.findViewById(R.id.jurusanx)
+            jeniskelamin = itemView.findViewById(R.id.jeniskelaminx)
+            alamat = itemView.findViewById(R.id.alamatx)
             ListItem = itemView.findViewById(R.id.list_item)
         }
     }
@@ -47,11 +51,15 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
         val NIM: String? = listMahasiswa.get(position).nim
         val Nama: String? = listMahasiswa.get(position).nama
         val Jurusan: String? = listMahasiswa.get(position).jurusan
+        val jeniskelamin: String? = listMahasiswa.get(position).jeniskelamin
+        val alamat: String? = listMahasiswa.get(position).alamat
 
         //Memasukan Nilai/Value kedalam View (TextView: NIM, Nama, Jurusan)
         holder.NIM.text = "NIM: $NIM"
         holder.Nama.text = "Nama: $Nama"
         holder.Jurusan.text = "Jurusan: $Jurusan"
+        holder.jeniskelamin.text = "jeniskelamin: $jeniskelamin"
+        holder.alamat.text = "alamat: $alamat"
         holder.ListItem.setOnLongClickListener(object : View.OnLongClickListener {
             override fun onLongClick(v: View?): Boolean {
 //Kodingan untuk fungsi Edit dan Delete, yang dibahas pada Tutorial Berikutnya.
